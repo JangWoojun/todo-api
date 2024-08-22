@@ -2,12 +2,10 @@ package com.example.todo_api.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Table(name = "tb_todo")
-public class Todo {
+@Table(name = "tb_post")
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -17,14 +17,13 @@ public class TodoController {
     private TodoService todoService;
 
 
-    @GetMapping
     public List<Todo> getAllTodos() {
         return todoService.getAllTodos();
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Todo> getAllTodos(@PathVariable Long id) {
+    public ResponseEntity<Todo> getTodos(@PathVariable("id") Long id) {
 
         Todo todo = todoService.getTodoById(id).orElseThrow(() ->  new RuntimeException("Todo not found"));
 
@@ -37,13 +36,13 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Todo> updateTodo(@PathVariable Long id, @RequestBody Todo todoDetails) {
+    public ResponseEntity<Todo> updateTodo(@PathVariable("id") Long id, @RequestBody Todo todoDetails) {
         Todo updateTodo = todoService.updateTodo(id, todoDetails);
         return ResponseEntity.ok(updateTodo);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTodo(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTodo(@PathVariable("id") Long id) {
         todoService.deleteTodo(id);
         return ResponseEntity.ok().build();
     }

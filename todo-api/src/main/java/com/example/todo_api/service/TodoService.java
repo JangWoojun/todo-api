@@ -3,11 +3,12 @@ package com.example.todo_api.service;
 import com.example.todo_api.entity.Todo;
 import com.example.todo_api.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@org.springframework.stereotype.Service
+@Service
 public class TodoService {
     @Autowired
     private TodoRepository repository;
