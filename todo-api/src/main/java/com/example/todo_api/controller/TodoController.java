@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/todos")
 public class TodoController {
@@ -17,6 +18,7 @@ public class TodoController {
     private TodoService todoService;
 
 
+    @GetMapping
     public List<Todo> getAllTodos() {
         return todoService.getAllTodos();
     }
