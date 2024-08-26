@@ -2,6 +2,7 @@ package com.example.todo_api.controller;
 
 
 import com.example.todo_api.entity.Todo;
+import com.example.todo_api.exception.ResourceNotFoundException;
 import com.example.todo_api.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class TodoController {
     @GetMapping("/{id}")
     public ResponseEntity<Todo> getTodos(@PathVariable("id") Long id) {
 
-        Todo todo = todoService.getTodoById(id).orElseThrow(() ->  new RuntimeException("Todo not found"));
+        Todo todo = todoService.getTodoById(id).orElseThrow(() ->  new ResourceNotFoundException("Todo not found"));
 
         return ResponseEntity.ok(todo);
     }
