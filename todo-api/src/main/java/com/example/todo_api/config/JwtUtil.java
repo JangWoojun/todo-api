@@ -14,10 +14,7 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-//    private String SECRET_KEY = Base64.getEncoder().encodeToString("secret".getBytes());
-
     private final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -56,7 +53,6 @@ public class JwtUtil {
                 .signWith(SECRET_KEY)
                 .compact();
     }
-
 
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
